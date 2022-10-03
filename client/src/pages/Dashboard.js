@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import jwt from 'jsonwebtoken'
+import jwt_decode from 'jwt-decode'
 import { useNavigate } from 'react-router-dom'
 
 const Dashboard = () => {
@@ -25,7 +25,7 @@ const Dashboard = () => {
 	useEffect(() => {
 		const token = localStorage.getItem('token')
 		if (token) {
-			const user = jwt.decode(token)
+			const user = jwt_decode(token)
 			if (!user) {
 				localStorage.removeItem('token')
 				navigate('/login')
